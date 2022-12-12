@@ -13,4 +13,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.Day {
+  border: 1px solid black;
+}
+</style>

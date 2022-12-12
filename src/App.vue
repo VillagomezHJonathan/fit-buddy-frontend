@@ -4,19 +4,17 @@
   </header>
 
   <main>
-    <WeekFull />    
+    <RouterView />
   </main>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
-import WeekFull from './components/WeekFull.vue';
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    WeekFull
+    NavBar
   }
 }
 </script>

@@ -21,4 +21,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.Week {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  
+}
+</style>
