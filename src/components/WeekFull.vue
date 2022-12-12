@@ -1,14 +1,16 @@
 <template>
   <div class="Week">
     <div :key="day" v-for="day in days">
-      <WeekDay :day="day" />
+      <WeekDay :day="day" :isToday="day === todaysDay" />
     </div>
   </div>
 </template>
 
 <script>
 import WeekDay from './WeekDay.vue';
-import { daysArr } from '../utils'
+import { daysArr, getTodaysDate } from '../utils'
+
+const todaysDate = getTodaysDate()
 
 export default {
   name: 'WeekFull',
@@ -16,7 +18,8 @@ export default {
     WeekDay
   },
   data: () => ({
-    days: daysArr
+    days: daysArr,
+    todaysDay: todaysDate.dayName
   })
 }
 </script>
