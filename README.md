@@ -1,23 +1,24 @@
-# Fit Buddy
+# fit-buddy-frontend
 
-## Jonathan Villagomez
+## Project setup
+```
+npm install
+```
 
-[LinkedIn](https://www.linkedin.com/in/jonathanvillagomezhernandez/) |
-[GitHub](https://github.com/VillagomezHJonathan) |
-[Website](https://www.jonweb.dev/)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
----
+### Compiles and minifies for production
+```
+npm run build
+```
 
-### **_Description_**
+### Lints and fixes files
+```
+npm run lint
+```
 
-#### An application used to set up your workout routine for the week!
-
----
-
-### **_Project Set-Up_**
-
-#### Checkout this projects Trello Board!: [Trello](https://trello.com/b/SOxut66K/fit-buddy)
-
-![Image](/project-info/chd.svg)
-
-![Image](/project-info/erd.svg)
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
