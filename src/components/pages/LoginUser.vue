@@ -1,5 +1,5 @@
 <template>
-  <div class="RegisterUser">
+  <div class="LoginUser">
     <form>
       <label for="name">Name</label>
       <input
@@ -22,14 +22,7 @@
       name="password"
       placeholder="Password"/>
 
-      <label for="confirmPassword">Confirm Password</label>
-      <input
-      type="password"
-      id="confirmPassword"
-      name="confirmPassword"
-      placeholder="Confirm Password"/>
-
-      <button>Register</button>
+      <button>Log In</button>
     </form>
   </div>
 </template>
