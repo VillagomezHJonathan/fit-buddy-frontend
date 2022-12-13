@@ -51,7 +51,6 @@ export default {
       evt.preventDefault()
       GetExercises({name: this.searchQuery})
       .then((data) => {
-        console.log(data)
         this.exercises = data
         this.searched = true
         this.searchQuery = ''
@@ -61,7 +60,6 @@ export default {
     onClick(muscle) {
       GetExercises({muscle: muscle})
       .then((data) => {
-        console.log(data)
         this.exercises = data
         this.searched = true
         this.searchQuery = ''

@@ -5,7 +5,9 @@
     <p class="type">{{exercise.type}}</p>
     <p class="muscle">{{exercise.muscle}}</p>
     <p class="type">{{exercise.type}}</p>
-    <p class="instructions">{{exercise.instructions}}</p>
+    <p ref="instructions" class="instructions">{{exercise.instructions}}</p>
+    
+    <button @click="toggleInstructions">Toggle Instructions</button>
   </div>
 </template>
 
@@ -14,6 +16,11 @@ export default {
   name: 'ExerciseCard',
   props: {
     exercise: Object
+  },
+  methods: {
+    toggleInstructions() {
+      this.$refs.instructions.classList.toggle('show')
+    }
   }
 }
 </script>
@@ -22,5 +29,13 @@ export default {
 .ExerciseCard {
   background-color: black;
   color: white;
+
+  .instructions {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
 }
 </style>
