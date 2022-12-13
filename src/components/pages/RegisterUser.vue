@@ -3,6 +3,8 @@
     <form>
       <label for="name">Name</label>
       <input
+      @input="onChange"
+      :value="name"
       type="text"
       id="name"
       name="name"
@@ -10,6 +12,8 @@
 
       <label for="email">Email</label>
       <input
+      @input="onChange"
+      :value="email"
       type="email"
       id="email"
       name="email"
@@ -17,6 +21,8 @@
 
       <label for="password">Password</label>
       <input
+      @input="onChange"
+      :value="password"
       type="password"
       id="password"
       name="password"
@@ -24,6 +30,8 @@
 
       <label for="confirmPassword">Confirm Password</label>
       <input
+      @input="onChange"
+      :value="confirmPassword"
       type="password"
       id="confirmPassword"
       name="confirmPassword"
@@ -36,7 +44,19 @@
 
 <script>
 export default {
-  name: 'RegisterUser'
+  name: 'RegisterUser',
+  methods: {
+    onChange(evt) {
+      const target = evt.target
+      this[target.id] = target.value
+    }
+  },
+  data: () => ({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
 }
 </script>
 

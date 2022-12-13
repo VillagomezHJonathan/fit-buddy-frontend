@@ -32,5 +32,10 @@ form {
   max-width: 500px;
   display: flex;
   flex-direction: column;
+
+  label {
+    position: absolute;
+    left: -9999999px;
+  }
 }
 </style>
