@@ -29,7 +29,7 @@ export default {
 }
 
 form {
-  max-width: 500px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
 
