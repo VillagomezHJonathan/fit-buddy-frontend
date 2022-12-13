@@ -11,7 +11,11 @@ const options = {
 }
 
 export const GetExercises = (params = null) => {
-  if (params) options.params = params
+  if (params) {
+    params.muscle === 'cardio'
+      ? (options.params = { type: 'cardio' })
+      : (options.params = params)
+  }
 
   const exercises = axios
     .request(options)

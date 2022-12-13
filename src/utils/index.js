@@ -39,7 +39,8 @@ export const musclesArr = [
   'neck',
   'quadriceps',
   'traps',
-  'triceps'
+  'triceps',
+  'cardio'
 ]
 
 export const getTodaysDate = () => {
