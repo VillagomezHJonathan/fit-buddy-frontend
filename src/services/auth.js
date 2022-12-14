@@ -11,3 +11,8 @@ export const LoginUser = async (data) => {
   localStorage.setItem('token', res.data.token)
   return res.data.user
 }
+
+export const CheckSession = async () => {
+  const res = await Client.get('/auth/session')
+  return res.data
+}

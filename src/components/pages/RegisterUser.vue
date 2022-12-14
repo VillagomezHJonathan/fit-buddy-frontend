@@ -58,7 +58,7 @@ export default {
       const target = evt.target
       this[target.id] = target.value
     },
-    onSubmit(evt) {
+    async onSubmit(evt) {
       evt.preventDefault()
       if (this.password === this.confirmPassword) {
         const data = {
@@ -66,7 +66,7 @@ export default {
           email: this.email,
           password: this.password
         }
-        Register(data)
+        await Register(data)
         this.$router.push('/login')
       }
 

@@ -2,10 +2,11 @@
   <nav>
     <p class="logo">LOGO</p>
 
-    <div>
+    <div v-if="authenticated">
       <p>Link 1</p>
       <p>Link 2</p>
       <p>Link 3</p>
+      <button class="link" @click="signOut">Sign Out</button>
     </div>
   </nav>
 </template>
@@ -13,7 +14,15 @@
 <script>
 
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  props: {
+    authenticated: Boolean
+  },
+  methods: {
+    signOut() {
+      this.setUser(null)
+    }
+  }
 }
 
 </script>

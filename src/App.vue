@@ -1,20 +1,46 @@
 <template>
   <header>
-    <NavBar />
+    <NavBar :setUser="setUser" :authenticated="authenticated" />
   </header>
 
   <main>
-    <RouterView />
+    <RouterView :setUser="setUser" :user="user" :authenticated="authenticated" />
   </main>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
+import { CheckSession } from './services/auth';
 
 export default {
   name: 'App',
   components: {
     NavBar
+  },
+  data: () => ({
+    user: null,
+    authenticated: false
+  }),
+  methods: {
+    setUser(user) {
+      if (user === null) {
+        this.user = null
+        this.authenticated = false
+      } else {
+        this.user = user
+        this.authenticated = true
+      }
+    },
+    async sessionCheck() {
+      const token = localStorage.getItem('token')
+      if (token) {
+       const payload = await CheckSession()
+       this.setUser(payload)
+      }
+    }
+  },
+  mounted() {
+    this.sessionCheck()
   }
 }
 </script>

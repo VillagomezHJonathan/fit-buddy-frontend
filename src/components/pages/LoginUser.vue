@@ -31,12 +31,13 @@ import { LoginUser } from '@/services/auth'
 
 export default {
   name: 'RegisterUser',
+  props: ['setUser'],
   methods: {
     onChange(evt) {
       const target = evt.target
       this[target.id] = target.value
     },
-    onSubmit(evt) {
+    async onSubmit(evt) {
       evt.preventDefault()
 
       const credentials = {
@@ -44,8 +45,14 @@ export default {
         password: this.password
       } 
 
-      LoginUser(credentials)
+      const payload = await LoginUser(credentials)
 
+      if (payload) {
+        this.setUser(payload)
+        this.$router.push('/')
+      }
+
+      
       this.email = ''
       this.password = ''
     }
