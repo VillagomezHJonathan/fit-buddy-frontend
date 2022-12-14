@@ -43,6 +43,8 @@
 
       <button>Register</button>
     </form>
+
+    <p>Already have an account? <RouterLink to="/login">Log In</RouterLink></p>
   </div>
 </template>
 
@@ -65,6 +67,7 @@ export default {
           password: this.password
         }
         Register(data)
+        this.$router.push('/login')
       }
 
       this.name = ''

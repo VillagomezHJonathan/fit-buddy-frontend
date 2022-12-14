@@ -1,15 +1,6 @@
 <template>
   <div class="LoginUser">
-    <form>
-      <label for="name">Name</label>
-      <input
-      @input="onChange"
-      :value="name"
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Name"/>
-
+    <form @submit="onSubmit">
       <label for="email">Email</label>
       <input
       @input="onChange"
@@ -30,20 +21,36 @@
       
       <button>Log In</button>
     </form>
+
+    <p>Don't have an account? <RouterLink to="/register">Register</RouterLink></p>
   </div>
 </template>
 
 <script>
+import { LoginUser } from '@/services/auth'
+
 export default {
   name: 'RegisterUser',
   methods: {
     onChange(evt) {
       const target = evt.target
       this[target.id] = target.value
+    },
+    onSubmit(evt) {
+      evt.preventDefault()
+
+      const credentials = {
+        email: this.email,
+        password: this.password
+      } 
+
+      LoginUser(credentials)
+
+      this.email = ''
+      this.password = ''
     }
   },
   data: () => ({
-    name: '',
     email: '',
     password: ''
   })
