@@ -45,12 +45,20 @@ export default {
       if (token) {
        const user = await CheckSession()
        const routine = await GetUserRoutine(user)
-       
-       const payload = {
-        ...user,
-        routine: routine
-       }
 
+       let payload = null
+       if (routine) {
+         payload = {
+          ...user,
+          routine: routine
+        }
+       } else {
+        payload = {
+          ...user
+        }
+       }
+       
+       
        this.setUser(payload)
       }
     }

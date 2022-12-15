@@ -4,7 +4,7 @@
     <WeekFull :user="user" :updateUser="updateUser" />  
     <h2 v-if="this.user">Hello {{this.user.name}}!</h2>
     <h3>Today's Schedule:</h3>
-    <div v-if="getDayExercises(todaysDay).length">
+    <div v-if="getDayExercises(todaysDay).length || exercises.length">
       <p  v-for="e in getDayExercises(todaysDay)" :key="e.name">
         {{e.exercise_name.toUpperCase()}} Sets: {{e.sets}} Reps: {{e.reps}}
       </p>
