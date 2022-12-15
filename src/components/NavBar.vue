@@ -15,9 +15,7 @@
 
 export default {
   name: 'NavBar',
-  props: {
-    authenticated: Boolean
-  },
+  props: ['setUser', 'authenticated'],
   methods: {
     signOut() {
       this.setUser(null)

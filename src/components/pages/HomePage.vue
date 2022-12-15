@@ -1,7 +1,8 @@
 <template>
   <div class="Home">
     <TodaysDate />
-    <WeekFull />    
+    <WeekFull :user="user" />  
+    <h2 v-if="this.user">Hello {{this.user.name}}!</h2>
     <FindExercises />
   </div>
 </template>
@@ -9,14 +10,13 @@
 <script>
 import WeekFull from '../WeekFull.vue';
 import TodaysDate from '../TodaysDate.vue';
-import FindExercises from '../FindExercises.vue';
 
 export default {
   name: 'HomePage',
+  props: ['user'],
   components: {
     WeekFull,
-    TodaysDate,
-    FindExercises
+    TodaysDate
   }
 }
 </script>

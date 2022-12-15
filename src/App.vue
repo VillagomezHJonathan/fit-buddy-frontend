@@ -26,6 +26,7 @@ export default {
       if (user === null) {
         this.user = null
         this.authenticated = false
+        localStorage.clear()
       } else {
         this.user = user
         this.authenticated = true
@@ -41,6 +42,7 @@ export default {
   },
   mounted() {
     this.sessionCheck()
+    // this.loginPrompt()
   }
 }
 </script>
@@ -52,6 +54,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+body {
+  overflow-x: hidden;
+
+  .show {
+    overflow-y: hidden;
+  }
 }
 
 form {
