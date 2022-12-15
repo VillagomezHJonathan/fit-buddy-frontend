@@ -21,7 +21,13 @@ export default {
 
 <style lang="scss" scoped>
 .TodaysDate {
+  width: fit-content;
   display: flex;
+  margin: 0 auto;
+
+  .month {
+    text-transform: capitalize;
+  }
 
   p:nth-of-type(2) {
     margin-left: 0.5rem;

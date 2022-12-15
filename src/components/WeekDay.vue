@@ -2,37 +2,37 @@
   <div class="Day today" v-if="isToday" @click="togglePopUp">
     <p class="name">{{day}}</p>
 
-    <p v-if="exercises.length">Exercises</p>
+    <p v-if="exercises.length">Exercise</p>
     <p v-else>Rest</p>
   </div>
 
   <div class="Day" v-else @click="togglePopUp">
     <p class="name">{{day}}</p>
 
-    <p v-if="exercises.length">Exercises</p>
+    <p v-if="exercises.length">Exercise</p>
     <p v-else>Rest</p>
   </div>
 
   <div class="pop-up" ref="popUp">
-    <button @click="toggleFindMode">Add Exercises</button>
     <p class="name">{{day}}</p>
-
+    
     <div v-if="exercises.length || newExercises.length">
-      <div v-for="e in exercises" :key="e.exercise_name">
-        <p>{{e.exercise_name}}</p>
-        <p>Sets: {{e.sets}}</p>
-        <p>Reps: {{e.reps}}</p>
+      <div class="exercise" v-for="e in exercises" :key="e.exercise_name">
+        <p>{{e.exercise_name.toUpperCase()}} Sets: {{e.sets}} Reps: {{e.reps}}</p>
       </div>
-
-      <div v-for="ne in newExercises" :key="ne.name">
-        <p>{{ne.name}}</p>
-        <p>Sets: {{ne.sets}}</p>
-        <p>Reps: {{ne.reps}}</p>
+      
+      <div class="exercise" v-for="ne in newExercises" :key="ne.name">
+        <p>{{ne.name.toUpperCase()}} Sets: {{ne.sets}} Reps: {{ne.reps}}</p>
       </div>
     </div>
-
+    
     <p v-else>Rest</p>
-    <button @click="saveExercise">Save</button>
+
+    <div class="inputs">
+      <button @click="toggleFindMode" v-if="!findMode">Add Exercises</button>
+      <button v-if="findMode" @click="saveExercise">Save</button>
+      <button v-else @click="saveExercise">Ok</button>
+    </div>
 
     <FindExercises v-if="findMode" :addExercise="addExercise" :findMode="true" />
   </div>
@@ -40,13 +40,14 @@
 
 <script>
 import { getTodaysDate } from '@/utils';
+import { PostExercise } from '@/services';
 import FindExercises from '../components/FindExercises.vue';
 
 const date = getTodaysDate()
 
 export default {
   name: 'WeekDay',
-  props: ['day', 'isToday', 'week', 'exercises'],
+  props: ['day', 'isToday', 'week', 'exercises', 'routine', 'user', 'updateUser'],
   components: {
     FindExercises
   },
@@ -56,9 +57,15 @@ export default {
     newExercises: []
   }), 
   methods: {   
-    saveExercise(){
+    async saveExercise(){
       document.body.classList.remove('show')
       this.$refs.popUp.classList.remove('show')
+      this.findMode = false
+
+      if (this.newExercises.length) {
+        await PostExercise(this.user, this.user.routine, this.day, this.newExercises)
+        this.updateUser()
+      }
     },
     togglePopUp() {
       document.body.classList.add('show')
@@ -89,7 +96,8 @@ export default {
   }
 
   &.today {
-    background-color: grey;
+    background-color: #76f9c2;
+    color: black;
   }
 }
 
@@ -103,11 +111,25 @@ export default {
   align-items: center;
   background-color: rgba($color: #000000, $alpha: 0.9);
   color: white;
-  width: 100vh;
+  width: 100%;
   height: 100vh;
   
   &.show {
     display: flex;
+  }
+
+  button {
+    margin: 1rem 0.5rem;
+  }
+
+  .exercise {
+    display: flex;
+    font-size: 0.75em;
+    
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 }
 </style>

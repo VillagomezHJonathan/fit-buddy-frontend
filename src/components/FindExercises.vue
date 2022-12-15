@@ -5,7 +5,8 @@
       type="text" 
       id="search" 
       :value="searchQuery" 
-      @input="onChange" />
+      @input="onChange"
+      placeholder="Search" />
 
       <button>Search</button>
     </form>
@@ -77,16 +78,29 @@ export default {
   .muscles-container {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 2rem;
 
     .muscle {
-      padding: 0.25rem;
+      padding: 0.25rem 1rem;
       cursor: pointer;
+      background-color: #5f5e6a;
+      border-radius: 1rem;
+      color: #76f9c2;
+      margin: 0.5rem;
     }
   }
 
   .results {
     overflow-y: scroll;
     height: 500px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  form {
+    margin: 1rem auto;
+    flex-direction: row;
   }
 }
 </style>

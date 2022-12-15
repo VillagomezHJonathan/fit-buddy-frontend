@@ -1,11 +1,8 @@
 <template>
   <nav>
-    <p class="logo">LOGO</p>
+    <p class="logo">FitBuddy</p>
 
     <div v-if="authenticated">
-      <p>Link 1</p>
-      <p>Link 2</p>
-      <p>Link 3</p>
       <button class="link" @click="signOut">Sign Out</button>
     </div>
   </nav>
@@ -19,6 +16,7 @@ export default {
   methods: {
     signOut() {
       this.setUser(null)
+      this.$router.push('/login')
     }
   }
 }
@@ -27,11 +25,13 @@ export default {
 
 <style>
 nav {
+  margin-bottom: 2rem;
+  border-radius: 5rem;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   color: white;
-  background-color: black;
+  font-size: 2em;
 }
 
 nav div {

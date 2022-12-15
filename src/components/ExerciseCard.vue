@@ -26,10 +26,9 @@
       <button >Add</button>
     </form>
 
-    <p class="difficulty">{{exercise.difficulty}}</p>
-    <p class="type">{{exercise.type}}</p>
-    <p class="muscle">{{exercise.muscle}}</p>
-    <p class="type">{{exercise.type}}</p>
+    <p class="difficulty">Difficulty: {{exercise.difficulty}}</p>
+    <p class="type">Type: {{exercise.type}}</p>
+    <p class="muscle">Muscle: {{exercise.muscle}}</p>
     <p ref="instructions" class="instructions">{{exercise.instructions}}</p>
 
     <button @click="toggleInstructions">Toggle Instructions</button>
@@ -77,8 +76,21 @@ export default {
 
 <style lang="scss" scoped>
 .ExerciseCard {
-  background-color: black;
+  width: 500px;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  background-color: #23222a;
   color: white;
+
+  form {
+    flex-direction: row;
+    margin: 0 auto;
+
+    input {
+      width: 100px;
+    }
+  }
 
   .instructions {
     display: none;

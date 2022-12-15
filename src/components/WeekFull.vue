@@ -6,13 +6,14 @@
       :day="day" 
       :isToday="day === todaysDay" 
       :week="this.$refs.week"
-      :exercises="getDayExercises(day)" />
+      :exercises="getDayExercises(day)"
+      :user="user"
+      :updateUser="updateUser" />
   </div>
 </template>
 
 <script>
 import WeekDay from './WeekDay.vue';
-import { GetUserRoutine } from '@/services'
 import { daysArr, getTodaysDate } from '../utils'
 
 const todaysDate = getTodaysDate()
@@ -22,25 +23,22 @@ export default {
   components: {
     WeekDay
   },
-  props: ['user'],
+  props: ['user', 'updateUser'],
   data: () => ({
     days: daysArr,
-    todaysDay: todaysDate.dayName,
-    routine: []
+    todaysDay: todaysDate.dayName
   }),
   methods: {
-    async getRoutine() {
-      if (this.user) {
-        const data = await GetUserRoutine(this.user)
-        this.routine = data
-      }
-    },
     getDayExercises(dayName){
-      return this.routine.filter((exercise) => exercise.day_name === dayName)
+      if (this.user) {
+        return this.user.routine.exercises.filter((exercise) => exercise.day_name === dayName)
+      }
+
+      return []
     }
   },
   mounted() {
-    this.getRoutine()
+  
   }
 }
 </script>
