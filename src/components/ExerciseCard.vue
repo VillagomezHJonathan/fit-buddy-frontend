@@ -8,15 +8,14 @@
     <p ref="instructions" class="instructions">{{exercise.instructions}}</p>
     
     <button @click="toggleInstructions">Toggle Instructions</button>
+    <button v-if="this.findMode">Add</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ExerciseCard',
-  props: {
-    exercise: Object
-  },
+  props: ['exercise', 'findMode'],
   methods: {
     toggleInstructions() {
       this.$refs.instructions.classList.toggle('show')

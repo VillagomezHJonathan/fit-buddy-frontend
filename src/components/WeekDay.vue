@@ -20,7 +20,7 @@
     <p v-else>Rest</p>
     <button @click="saveExercise">Save</button>
 
-    <FindExercises v-if="findMode" />
+    <FindExercises v-if="findMode" :findMode="true" />
   </div>
 </template>
 

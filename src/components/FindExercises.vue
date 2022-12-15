@@ -21,7 +21,7 @@
     </div>
 
     <div class="results" v-if="searched">
-      <ExerciseCard :key="exercise.name" v-for="exercise in exercises" :exercise="exercise" /> 
+      <ExerciseCard :findMode="this.findMode" :key="exercise.name" v-for="exercise in exercises" :exercise="exercise" /> 
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   components: {
     ExerciseCard
   },
+  props: ['findMode'],
   data: () => ({
     exercises: [],
     muscles: musclesArr,
@@ -81,6 +82,11 @@ export default {
       padding: 0.25rem;
       cursor: pointer;
     }
+  }
+
+  .results {
+    overflow-y: scroll;
+    height: 500px;
   }
 }
 </style>
