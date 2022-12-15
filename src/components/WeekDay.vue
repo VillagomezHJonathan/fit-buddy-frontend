@@ -16,11 +16,25 @@
   <div class="pop-up" ref="popUp">
     <button @click="toggleFindMode">Add Exercises</button>
     <p class="name">{{day}}</p>
-    <p v-if="exercises.length">Exercises</p>
+
+    <div v-if="exercises.length || newExercises.length">
+      <div v-for="e in exercises" :key="e.exercise_name">
+        <p>{{e.exercise_name}}</p>
+        <p>Sets: {{e.sets}}</p>
+        <p>Reps: {{e.reps}}</p>
+      </div>
+
+      <div v-for="ne in newExercises" :key="ne.name">
+        <p>{{ne.name}}</p>
+        <p>Sets: {{ne.sets}}</p>
+        <p>Reps: {{ne.reps}}</p>
+      </div>
+    </div>
+
     <p v-else>Rest</p>
     <button @click="saveExercise">Save</button>
 
-    <FindExercises v-if="findMode" :findMode="true" />
+    <FindExercises v-if="findMode" :addExercise="addExercise" :findMode="true" />
   </div>
 </template>
 
@@ -38,7 +52,8 @@ export default {
   },
   data: () => ({
     todaysDay: date.dayName,
-    findMode: false
+    findMode: false,
+    newExercises: []
   }), 
   methods: {   
     saveExercise(){
@@ -51,6 +66,9 @@ export default {
     },
     toggleFindMode() {
       this.findMode = true
+    },
+    addExercise(e) {
+      this.newExercises.push(e)
     }
   }
 }

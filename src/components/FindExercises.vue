@@ -21,7 +21,7 @@
     </div>
 
     <div class="results" v-if="searched">
-      <ExerciseCard :findMode="this.findMode" :key="exercise.name" v-for="exercise in exercises" :exercise="exercise" /> 
+      <ExerciseCard :addExercise="addExercise" :findMode="this.findMode" :key="exercise.name" v-for="exercise in exercises" :exercise="exercise" /> 
     </div>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
   components: {
     ExerciseCard
   },
-  props: ['findMode'],
+  props: ['findMode', 'addExercise'],
   data: () => ({
     exercises: [],
     muscles: musclesArr,
