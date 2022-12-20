@@ -1,24 +1,13 @@
 <template>
   <nav>
     <p class="logo">FitBuddy</p>
-
-    <div v-if="authenticated">
-      <button class="link" @click="signOut">Sign Out</button>
-    </div>
   </nav>
 </template>
 
 <script>
 
 export default {
-  name: 'NavBar',
-  props: ['setUser', 'authenticated'],
-  methods: {
-    signOut() {
-      this.setUser(null)
-      this.$router.push('/login')
-    }
-  }
+  name: 'NavBar'
 }
 
 </script>

@@ -47,7 +47,7 @@ const date = getTodaysDate()
 
 export default {
   name: 'WeekDay',
-  props: ['day', 'isToday', 'week', 'exercises', 'routine', 'user', 'updateUser'],
+  props: ['day', 'isToday', 'week', 'exercises', 'user', 'updateUser'],
   components: {
     FindExercises
   },

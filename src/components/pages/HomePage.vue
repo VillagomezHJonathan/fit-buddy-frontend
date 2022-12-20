@@ -23,7 +23,6 @@ import { getTodaysDate } from '@/utils';
 
 const date = getTodaysDate()
 
-
 export default {
   name: 'HomePage',
   props: ['user', 'authenticated', 'setUser'],
