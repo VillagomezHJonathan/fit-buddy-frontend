@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const routines = defineStore('routines', {
+export const routinesStore = defineStore('routines', {
   state: () => ({
     routines: [],
     currentRoutine: {}
